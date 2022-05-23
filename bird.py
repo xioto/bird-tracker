@@ -5,8 +5,8 @@ import numpy as np
 import tensorflow as tf
 from pathlib import Path
 
-modelFullPath = 'C:/Users/euan/Documents/bird/models/ukGardenModel.pb'
-labelsFullPath = 'C:/Users/euan/Documents/bird/models/ukGardenModel_labels.txt'
+modelFullPath = './models/ukGardenModel.pb'
+labelsFullPath = './models/ukGardenModel_labels.txt'
 
 original_stdout = sys.stdout
 
@@ -47,18 +47,35 @@ def run_inference_on_image(imagePath):
         return answer
 
 def findImages():
-    for image in os.listdir("C:/Users/euan/Documents/bird/testImages"):
+    for image in os.listdir("./testImages"):
         if image.endswith(".jpg"):
             print (("Classifying {0}:").format(image))
-            run_inference_on_image("C:/Users/euan/Documents/bird/testImages/{0}".format(image))
+            run_inference_on_image("./testImages/{0}".format(image))
 
-def printGraph(amount):
+'''def printGraph(amount):
         value = amount * 20
         sys.stdout.write(" ")
         for x in range(int(value)):
             sys.stdout.write("#")
         sys.stdout.flush()
         print ("")
+'''
+'''
+def printGraph(amount):
+    with open("output.txt", 'w') as f:
+        value = amount * 20
+        print('"", "#"*value, file=f')
+'''
+
+'''def printGraph(amount):
+    value = int(amount * 20)
+    print("", "#"*value)
+'''
+
+def printGraph(amount):
+    with open("output.txt", 'a') as f:
+        value = int(amount * 20)
+        print("", "#"*value, file=f)
 
 
 if __name__ == '__main__':
