@@ -60,23 +60,14 @@ def findImages():
         sys.stdout.flush()
         print ("")
 '''
-'''
-def printGraph(amount):
-    with open("output.txt", 'w') as f:
-        value = amount * 20
-        print('"", "#"*value, file=f')
-'''
-
-'''def printGraph(amount):
-    value = int(amount * 20)
-    print("", "#"*value)
-'''
 
 def printGraph(amount):
-    with open("output.txt", 'a') as f:
+    with open ("output.txt", 'a') as f:
         value = int(amount * 20)
-        print("", "#"*value, file=f)
-
+        #print ("", "#"*value, file=f)
+        print ("")
+        #f.write(''+('#*value'))
+        f.write('word'+' +str(value)')
 
 if __name__ == '__main__':
     create_graph()
